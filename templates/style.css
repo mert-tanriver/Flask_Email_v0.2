@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #42455a;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+aside {
+    width: 30%;
+    padding-left: 25px;
+    margin-left: 25px;
+    float: right;
+    font-style: italic;
+    background-color: lightgray;
+  }
