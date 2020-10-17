@@ -5,7 +5,7 @@ from wtforms.fields.html5 import EmailField
 
 class GeneralForm(FlaskForm):
     title = StringField('Başlık Ekle', validators=[DataRequired()])
-    email = EmailField('Kullanıcı Ekle', validators=[DataRequired(), Email()])
+    email = StringField('Kullanıcı Ekle', validators=[DataRequired()])
     text = TextAreaField('Text')
     submit = SubmitField('Gönder')
 

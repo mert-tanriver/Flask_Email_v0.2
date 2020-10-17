@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for,request
-import forms,secrets
+import forms,secrets,mail_demo
 from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'GarbageValue' #secrets.token_bytes()
@@ -28,6 +29,10 @@ def index():
         print("Text : ",form.text.data)
         g = General(title = form.title.data, text = form.text.data)
         print(g)
+        
+        if form.title.data is not None:
+            mail_demo.mail_sender(form.title.data,form.email.data,form.text.data)
+        
         return redirect(url_for("index"))
     
     if request.method == 'POST' and form2.validate():
@@ -35,6 +40,7 @@ def index():
         print("E-Mail:",form2.add_email.data)
         return render_template("index.html",form=form,form2 = form2)
    
+ 
     return render_template("index.html",form=form,form2=form2)
 
 
