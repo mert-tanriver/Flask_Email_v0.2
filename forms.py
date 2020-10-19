@@ -10,6 +10,6 @@ class GeneralForm(FlaskForm):
     submit = SubmitField('Gönder')
 
 class AddContact(FlaskForm):
-    username = StringField("Kullanıcı Adı",validators=[DataRequired()])
-    add_email = EmailField("Adres Ekle",validators=[DataRequired(),Email()])
+    username = StringField("Kullanıcı Adı", validators=[DataRequired()])
+    add_email = EmailField("Adres Ekle",validators=[DataRequired()])
     add = SubmitField("Bağlantı Ekle")

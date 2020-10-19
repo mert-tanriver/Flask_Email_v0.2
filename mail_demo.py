@@ -1,6 +1,6 @@
 import smtplib
 from email.message import EmailMessage
-
+import os
 
 def mail_sender(subject,to,content):
     gmailaddress = "developingserver001@gmail.com"

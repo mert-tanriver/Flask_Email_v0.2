@@ -17,12 +17,21 @@ class General(db.Model):
     def __repr__(self):
         return f'{self.title} and {self.text}'
 
+class Contact(db.Model):
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(150), nullable = False)
+    mailadd = text = db.Column(db.String(500))
+
+    def __repr__(self):
+        return f'{self.username} and {self.mailadd}'
+
 
 @app.route('/')
 @app.route('/index',methods = ['POST','GET'])
 def index():
     form = forms.GeneralForm(request.form)
     form2 = forms.AddContact(request.form)
+
     if request.method == 'POST' and form.validate():
         print("Title : ",form.title.data)
         print("E-Mail : ",form.email.data)
@@ -38,10 +47,12 @@ def index():
     if request.method == 'POST' and form2.validate():
         print("Username :",form2.username.data)
         print("E-Mail:",form2.add_email.data)
-        return render_template("index.html",form=form,form2 = form2)
-   
- 
+        c = Contact(username = form2.username.data, mailadd = form2.add_email.data)
+        print(c)
+        return redirect(url_for("index"))
+
     return render_template("index.html",form=form,form2=form2)
+
 
 
 if __name__ == "__main__":

@@ -3,87 +3,103 @@
 
 <!--- Required URL's--->
  <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({selector:'#tinymce'});</script>
     <script type=”text/javascript” src=”ckeditor/ckeditor.js”></script>
 
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;  
+  
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.center-block {
+    margin: auto;
+    display: block;
+
+  }
+
+aside {
+    width: 30%;
+    padding-left: 25px;
+    margin-left: 25px;
+    float: right;
+    font-style: italic;
+    background-color: lightgray;
+  }
+
+#demotext {
+    color: #d15265;
+    background: #FFFFFF;
+    text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;
+    color: #444444;
+    background: #FFFFFF;
+    }
+
+.strokeme {
+    
+    text-shadow: #000 0px 0px 1px;
+}
+</style>
+
 <head>
     <title>CBİKO E-Mail</title>
 </head>
 
-<body style="background-color:#42455a;" class = "container">
-
+<body background="{{url_for('static', filename='kurumsal.jpg') }}" class = "container">
 
 <form action="/index" method="POST"> 
   <br>
   <div class="form-group">
     <div style="text-align: center">
-    <img src="{{url_for('static', filename='amblem_gray.png')}}" width="100" height="100"/>
+    <img src="{{url_for('static', filename='amblem1.svg')}}" width="150" height="150"/>
     </div>
-  <div> 
-    <br>
-    <h3 style="text-align:center;color:#d15265;" >TÜRKİYE CUMHURİYETİ CUMHURBAŞKANLIĞI</h3>
-    <h3 style="text-align:center;color:#d15265;" ><b>İNSAN KAYNAKLARI OFİSİ</b></h3>
+    
+    <div class = "strokeme"> 
+    <h3 style="text-align:center;color:#d61f37;" >TÜRKİYE CUMHURİYETİ CUMHURBAŞKANLIĞI</h3>
+    <h3 style="text-align:center;color:#d61f37;" ><b>İNSAN KAYNAKLARI OFİSİ</b></h3>
     <br>
     {{form.csrf_token()}}
     {{form.title(class="form-control",style="width: 710px", placeholder="Başlık Giriniz") }}
-  </div>
+    </div>
   </div>
 
 <div class="input-group mb-3 ">
-  <div class="col-xs-4">
-  {{form.email(class="form-control",style="width: 710px", placeholder="Adres Giriniz") }}
+  <div class="col-xs-4" >
+  {{form.email(class="form-control",style="width: 471px", placeholder="Adres Giriniz") }}
   </div>
   <div class="input-group-append">
-    <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#ContactScrollableModal">Bağlantı Ekle</button>
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModalScrollable">Bağlantılarım</button>
+    <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#AddConnectionButton">Bağlantı Ekle</button>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#MyConnectionButton">Bağlantılarım</button>
   </div>
 </div>
 
 
 
-<div class="modal fade" id="ContactScrollableModal" tabindex="-1" role="dialog" aria-labelledby="ContactScrollableModalTitle" aria-hidden="true">
+<div class="modal fade" id="MyConnectionButton" tabindex="-1" role="dialog" aria-labelledby="MyConnectionButton" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ContactScrollableModalTitle">Bağlantı Ekle</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Kullanıcı Adı" aria-label="Username" aria-describedby="basic-addon1">
-         </div>
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Kullanıcı Adresi" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2">@ornek.com</span>
-                </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-        <button type="button" class="btn btn-primary">Bağlantılar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Bağlantılar</h5>
+        <h5 class="modal-title" id="MyConnectionButton">Bağlantılar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -130,6 +146,48 @@
 <br>
 {{form.submit(class="btn btn-danger")}}
 </form>
+
+<!------------------------------------------ ADD CONNECTION MODAL -------------------------------------------->
+<form action="{{url_for('index') }}" method="POST"> 
+{{ form2.csrf_token }}
+<div class="modal fade" id="AddConnectionButton" tabindex="-1" role="dialog" aria-labelledby="AddConnectionButton" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="AddConnectionButton">Bağlantı Ekle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            
+            {{form2.username(class="form-control", placeholder="Kullanıcı Adı")}}
+         
+         </div>
+
+        <div class="input-group mb-3">
+                {{form2.add_email(class="form-control", placeholder="Kullanıcı Adresi")}}
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">@ornek.com</span>
+                </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        {{ form2.add(class="btn btn-primary") }}
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<!------------------------------------------ADD CONNECTION MODAL END------------------------------------------>
 <br>
 <div id="myDIV2" style="display: none;">
   <div class=input-group-prepend>
@@ -185,6 +243,11 @@
 
 
 
+<nav class="navbar fixed-bottom navbar-light bg-transparent">
+  <a class="navbar-brand" href="https://www.linkedin.com/in/mert-tanriver-b20b0791/" style = "color:#FFFFFF;" >
+   Mert TANRIVER 
+  </a>
+</nav>
 
 </div>
 
